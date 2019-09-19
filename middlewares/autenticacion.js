@@ -7,8 +7,8 @@ var SEED = require('../config/config').SEED;
 // ========================================
 exports.verificaToken = function(req,res,next) {
 
-    var token = rea.query.token;
-    jwt.verify(token, SEED, (err, deocded) => {
+    var token = req.query.token;
+    jwt.verify(token, SEED, (err, decode) => {
 
         if (err) {
             return res.status(401).json({
@@ -18,7 +18,7 @@ exports.verificaToken = function(req,res,next) {
             });
         }
 
-        req.usuario = deocde.usuario;
+        req.usuario = decode.usuario;
         next();
         // res.status(200).json({
         //     ok:true,
@@ -26,5 +26,5 @@ exports.verificaToken = function(req,res,next) {
         // });
 
     });
-}
+};
 

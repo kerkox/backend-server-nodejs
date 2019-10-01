@@ -41,14 +41,16 @@ mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res )=
 // app.use(express.static(__dirname + '/'))
 // app.use('/uploads', serveIndex(__dirname + '/uploads'));
 
+const API_VERSION = '/api';
 // Rutas
-app.use('/usuario',usuarioRoutes);
-app.use('/hospital',hospitalRoutes);
-app.use('/medico',medicoRoutes);
-app.use('/login',loginRoutes);
-app.use('/busqueda', busquedaRoutes);
-app.use('/upload', uploadRoutes);
-app.use('/img', imagenesRoutes);
+app.use(API_VERSION + '/usuario',usuarioRoutes);
+app.use(API_VERSION + '/hospital',hospitalRoutes);
+app.use(API_VERSION + '/medico',medicoRoutes);
+app.use(API_VERSION + '/login',loginRoutes);
+app.use(API_VERSION + '/busqueda', busquedaRoutes);
+app.use(API_VERSION + '/upload', uploadRoutes);
+app.use(API_VERSION + '/img', imagenesRoutes);
+app.use(API_VERSION + '/',appRoutes);
 app.use('/',appRoutes);
 
 
